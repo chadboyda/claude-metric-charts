@@ -1,0 +1,17 @@
+#!/bin/sh
+# metric-charts: helpers for the metric-charts skill.
+#   metric-charts lib                     print the lib dir (add to sys.path, then `import chart_kit`)
+#   metric-charts examples [out] [theme]  render the worked examples (themes: neutral, appsumo)
+#   metric-charts upload <channel> <thread_ts|""> "<text>" <file>...   post files + text to Slack as you
+here=$(cd "$(dirname "$0")" && pwd -P)
+lib="$here/../lib"
+cmd="$1"; [ $# -gt 0 ] && shift
+case "$cmd" in
+  lib) cd "$lib" && pwd -P ;;
+  examples)
+    out="${1:-.}"; theme="${2:-neutral}"; mkdir -p "$out"
+    python3 "$lib/examples/trend_vs_last_year.py" "$out/trend-vs-last-year.png" "$theme" &&
+    python3 "$lib/examples/no_link_and_event.py" "$out" "$theme" ;;
+  upload) exec python3 -I "$lib/slack_upload.py" "$@" ;;
+  *) sed -n '2,5p' "$0" | sed 's/^# \{0,1\}//'; exit 1 ;;
+esac

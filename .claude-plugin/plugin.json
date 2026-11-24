@@ -1,0 +1,9 @@
+{
+  "name": "metric-charts",
+  "version": "0.1.0",
+  "description": "Clean, honest metric charts for Slack and reports: a takeaway title, the caveats on the image, one point per chart, and a one-message post with the chart attached. Ships a small matplotlib kit with themes and worked examples.",
+  "license": "MIT",
+  "author": {
+    "name": "metric-charts contributors"
+  }
+}

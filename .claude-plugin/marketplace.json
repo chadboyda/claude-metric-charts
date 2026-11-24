@@ -1,0 +1,15 @@
+{
+  "name": "metric-charts",
+  "owner": {
+    "name": "metric-charts contributors"
+  },
+  "plugins": [
+    {
+      "name": "metric-charts",
+      "source": "./",
+      "description": "Clean, honest metric charts for Slack and reports.",
+      "version": "0.1.0",
+      "license": "MIT"
+    }
+  ]
+}
